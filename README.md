@@ -2,7 +2,7 @@
 
 To use this script the following command with command line argmuments indicating file names must be incldued:
 ```ruby
-sh pipeline.sh <referemce_sample.fna> <sample_base_name> <name_of_sample_gtf.gtf>
+sh pipeline.sh <reference_sample.fna> <sample_base_name> <name_of_sample_gtf.gtf>
 ```
 The usage of this script requieres modifications before being ran on the shell terminal. These additional requirements are: 
 1. Files: This script must be edited where any <> are found. Within the script anytime a <> is found, it countains a description of what it should represent, once modifieed remove the <>. 
