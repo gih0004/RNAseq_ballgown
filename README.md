@@ -1,4 +1,6 @@
 # RNAseq_BALLGOWN_PIPELINE
+This script is meant to be used as a soft coded squeleton of an RNAseq analysis pipeline with ballgown as the eventual data visualizer program. A hardcoded example of ballgown script is provided within the repository but is beyond the scope of the repository. 
+
 
 To use this script the following command with command line argmuments indicating file names must be incldued:
 ```ruby
