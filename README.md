@@ -1,21 +1,21 @@
 # RNAseq_BALLGOWN_PIPELINE
-This script is meant to be used as a soft coded squeleton of an RNAseq analysis pipeline with ballgown as the eventual data visualizer program. A softcoded example of ballgown script is provided within the repository with proper commenting but is not digested with a readme file. For more information on data visualization with ballgown visit [ballgown](https://bioconductor.org/packages/release/bioc/html/ballgown.html)
+This script is meant to be used as a soft code skeleton of an RNAseq analysis pipeline with ballgown as the eventual data visualizer program. A hardcoded example of a ballgown script is provided within the repository but is beyond the scope of the project's repository. 
 
 
 To use this script the following command with command line argmuments indicating file names must be incldued:
 ```ruby
 sh pipeline.sh <reference_sample.fna> <sample_base_name> <name_of_sample_gtf.gtf>
 ```
-The usage of this script requieres modifications before being ran on the shell terminal. These additional requirements are: 
-1. Files: This script must be edited where any <> are found. Within the script anytime a <> is found, it countains a description of what it should represent, once modifieed remove the <>. 
+The usage of this script requires modifications before being ran on the shell terminal. These additional requirements are: 
+1. Files: This script must be edited where any <> are found. Within the script, anytime a <> is found, it countains a description of what it should represent, once modified remove the <>. ??Not clear here
 
 2. Directory: This script must be ran within a directory containing : 
 - All fastq.gz files
 - Reference species/sample transcript for alignment = first command line argument 
-- General feature format or general transfer format for mapping. GTF format is the one requireed but this script has a command to modify from GFF > GTF. This script also includes a command to consistently format GFF files downloaded from internet reference. Both are commented out inittially.  
+- General feature format or general transfer format for mapping. GTF format is the one requireed but this script has a command to modify from GFF > GTF. This script also includes a command to consistently format GFF files downloaded from internet reference. Both are commented out initially.  
 
 
-3. Package dependency. This script requieres the following modules to be loaded: 
+3. Package dependency. This script requires the following modules to be loaded: 
 - fastqc
 - hisat2
 - samtools
@@ -25,7 +25,7 @@ The usage of this script requieres modifications before being ran on the shell t
 
 
 ### STEP 1: Run fastqc
-FASTQC is done as a quality check on the RNA reads. If the quality is low, it requieres an additional step of trimming - not displayed in this pipeline - 
+FASTQC is done as a quality check on the RNA reads. If the quality is low, it requires an additional step of trimming - not displayed in this pipeline. 
 
 ```ruby
 module load fastqc
@@ -35,16 +35,16 @@ fastqc *.fastq.gz  -o ./FASTQC
 
 
 
-For cleaning up FNA files downloaded from internet, and ensuring they only contain identifier in header row which is neccesary for creating indices, uncomment the command: 
+For cleaning up FNA files downloaded from the internet, and ensuring they only contain an identifier in header row which is neccesary for creating indices, uncomment the command: 
 
 ```ruby
 awk -F "." '{print $1}' "$fna_file" > GCFedited.fna
 ```
-genomic.fna is the reference_sample.fna file the user provides as a command line argument
+genomic.fna is the reference_sample.fna file the user provides as a command line argument.
 
 
 ### STEP 2: Run Hisat2--build 
-This step is an alignment of your reads with genome indexes. This pipeline first creates the index based on a DNA fasta file and then aligns reads to the created index
+This step is an alignment of your reads with genome indexes. This pipeline first creates the index based on a DNA fasta file and then aligns reads to the created index.
 Usage:
 - hisat2-build [options]* <reference_in> <ht2_base>
 - <reference_in> A comma-separated list of FASTA files containing the reference sequences to be aligned to, or, if -c is specified, the sequences themselves
@@ -64,8 +64,7 @@ This step contains <> that should be changed to the last string pattern in commo
 
 HISAT2 main usage alignment
 hisat2 [options]* -x <hisat2-idx> {-1 <m1> -2 <m2> } [-S <hit>]
-- dta
-       is for downstream aplications such as Stringtie
+- dta is for downstream aplications such as Stringtie
 -p is for processors being used
 -S is for the output sam file
 -x path for the indices built and being used for alignment
@@ -90,8 +89,8 @@ done
 To do anything meaningful with alignment data you must swith from SAM to its binary counterpart BAM file. This binary format is much easier for computer programs such as StringTie to work with.
 Basic usage: 
 $ samtools <command> [options] 
-- sort this sorts our bam sam files into bam files for more applications 
--o gives the output file name
+- this sorts our bam sam files into bam files for more applications 
+-o option gives the output file name
 
        
 ```ruby
@@ -120,7 +119,7 @@ The command :
 ```ruby 
 ls *_ST_.gtf > mergelist.txt  
 ```
-Is a wildcard to take all gtf files made from StringTie and include them all within the mergelist.txt file
+- *_ST_.gtf is a wildcard to take all gtf files made from StringTie and include them all within the mergelist.txt file
 The last command within this step takes the recently created merged .txt file and returns a proper merged gtf file called stringtie_merged.gtf
 
 StringTie Main usage:
@@ -164,10 +163,12 @@ done
 
 ```
 Now you will have neccesary output files to use in ballgown analysis, such files are : 
+       
+Could you explain what these file extensions mean? or like what the names of the files mean?
 1. e_data.ctab
 2. e2t.ctab
 3. i_data.ctab
 4. i2t.ctab
 5. t_data.ctab
 You should have these 5 files within a directory called ballgown and within subdirectories based of the sample names 
-
+# RNAseq_ballgown
