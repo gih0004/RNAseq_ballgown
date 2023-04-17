@@ -61,6 +61,7 @@ fastqc *.fastq.gz  -o ./FASTQC
 
 #awk -F "." '{print $1}' "$fna_file" > GCFedited.fna
 mkdir ./${sample_base_name}_index 
+cp ${fna_file} ./${sample_base_name}_index/${fna_file}
 cd ./${sample_base_name}_index             # this creates a directory specifically for the index
 hisat2-build --large-index  -f ${fna_file} ${sample_base_name} 
  
