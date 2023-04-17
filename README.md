@@ -1,5 +1,5 @@
 # RNAseq_BALLGOWN_PIPELINE
-This script is meant to be used as a soft coded squeleton of an RNAseq analysis pipeline with ballgown as the eventual data visualizer program. A hardcoded example of ballgown script is provided within the repository but is beyond the scope of the repository. 
+This script is meant to be used as a soft coded squeleton of an RNAseq analysis pipeline with ballgown as the eventual data visualizer program. A softcoded example of ballgown script is provided within the repository with proper commenting but is not digested with a readme file. For more information on data visualization with ballgown visit [ballgown](https://bioconductor.org/packages/release/bioc/html/ballgown.html)
 
 
 To use this script the following command with command line argmuments indicating file names must be incldued:
@@ -170,4 +170,4 @@ Now you will have neccesary output files to use in ballgown analysis, such files
 4. i2t.ctab
 5. t_data.ctab
 You should have these 5 files within a directory called ballgown and within subdirectories based of the sample names 
-# RNAseq_ballgown
+
